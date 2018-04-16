@@ -89,31 +89,40 @@ public class NumberUtil {
     private static String formatIntPart(String num, String[] numArray, String[] unit) {
 
         //按4位分割成不同的组（不足四位的前面补0）
-        Integer[] intnums = {1};
-
-        boolean zero = false;
+        String[] nums = split2ArrayByLen(num, 4);
         StringBuffer sb = new StringBuffer();
-        for (int i = 0; i < intnums.length; i++) {
-            //格式化当前4位
-            String r = format(intnums[i], numArray, unit);
-            if ("".equals(r)) {//
-                if ((i + 1) == intnums.length) {
-                    sb.append(numArray[0]);//结果中追加“零”
-                } else {
-                    zero = true;
-                }
-            } else {
-                //当前4位格式化结果不为空（即不为0）
-                //如果前4位为0，当前4位不为0
-                if (zero || (i > 0 && intnums[i] < 1000)) {
-                    sb.append(numArray[0]);//结果中追加“零”
-                }
-                sb.append(r);
-                sb.append(unit_common[intnums.length - 1 - i]);//在结果中添加权值
-                zero = false;
+        for (int i = 0; i < nums.length; i++) {
+            StringBuffer partNum = new StringBuffer();
+            for (int j = 0; j < nums[i].length(); j++) {
+                int length = nums[i].length();
+                partNum.append(unit[j]).append(numArray[Integer.valueOf(nums[i].substring(length-j-1, length-j))]);
             }
+            sb.insert(0,partNum.reverse().append(unit_common[i]));
         }
         return sb.toString();
+    }
+
+
+    /**
+     * 根据指定长度分割字符串为数组
+     *
+     * @param str
+     * @param length
+     * @return
+     */
+    public static String[] split2ArrayByLen(String str, int length) {
+        int strLength = str.length();
+        int size = strLength / length;
+        if (strLength % length > 0) {
+            size += 1;
+        }
+        int i = strLength;
+        String[] strArr = new String[size];
+        for (int k = 0; k < size; k++) {
+            strArr[k] = str.substring(i-length < 0 ? 0: i - length, i);
+            i -= length;
+        }
+        return strArr;
     }
 
     /**
@@ -254,25 +263,5 @@ public class NumberUtil {
         return num;
     }
 
-
-    public static String[] reverseStr2Array(String str, int digit) {
-        StringBuilder stringBuilder = new StringBuilder(str);
-        str = stringBuilder.reverse().toString();
-        int strLength = stringBuilder.length();
-        int size = strLength / digit;
-        if (strLength % digit > 0) {
-            size += 1;
-        }
-        int i = 0;
-        String[] strArr = new String[size];
-        int j = 0;
-        while (i < strLength) {
-            str.substring(i, i + digit < strLength -1 ?  + digit : strLength);
-            strArr[j] = StringUtil.;
-            j++;
-            i += digit;
-        }
-        return strArr;
-    }
 
 }

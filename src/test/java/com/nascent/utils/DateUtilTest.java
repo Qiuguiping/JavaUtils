@@ -14,10 +14,10 @@ public class DateUtilTest {
 
     @Test
     public void currentDateTime() throws Exception {
-        String str = "2365365";
+        String str = "2365365.236";
 
-           String a[] =  NumberUtil.reverseStr2Array(str,4);
-           System.out.println(a);
+
+           System.out.println(NumberUtil.toChineseLower(str));
     }
 
 

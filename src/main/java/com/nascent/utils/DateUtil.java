@@ -771,138 +771,79 @@ public class DateUtil {
     }
 
 
+    
+
     /**
-     * 时间按天分割
-     *
+     *  根据指定Calendar的field类型将时间段分成日期list
      * @param startDate
      * @param endDate
+     * @param number
+     * @param field
      * @return
      */
-    public static List<String> dateTimeSplit(Date startDate, Date endDate, int day,String pattern,int field) {
-        List<String> returnList = new ArrayList<String>();
-        Calendar calendarStart = Calendar.getInstance();
-        //开始时间
-        Calendar calendarEnd = Calendar.getInstance();
-        //结束时间
-        calendarStart.setTime(startDate);
-        calendarEnd.setTime(endDate);
-        while (calendarStart.compareTo(calendarEnd) < 1) {
-            returnList.add(instance(pattern).format(calendarStart.getTime()));
-            calendarStart.add(field, day);
-        }
-        return returnList;
+    public static List<Date> dateSplit2DateList(Date startDate, Date endDate, int number,int field) {
+        List<Date> list = new ArrayList<>();
+        do  {
+            list.add(startDate);
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(startDate);
+            calendar.add(field,number);
+            if(calendar.getTime().after(endDate)){
+                list.add(endDate);
+            }
+            startDate = calendar.getTime();
+        }while(startDate.getTime() <= endDate.getTime());
+        return list;
+    }
+
+    /**
+     *  根据指定Calendar的field类型将时间段分成字符串list
+     * @param startDate
+     * @param endDate
+     * @param number
+     * @param field
+     * @return
+     */
+    public static List<String> dateSplit2StrList(Date startDate, Date endDate, int number,int field,String pattern) {
+        List<String> list = new ArrayList<>();
+        do  {
+            list.add(format(startDate,pattern));
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(startDate);
+            calendar.add(field,number);
+            if(calendar.getTime().after(endDate)){
+                list.add(format(startDate,pattern));
+            }
+            startDate = calendar.getTime();
+        }while(startDate.getTime() <= endDate.getTime());
+        return list;
     }
 
 
     /**
-     * 日期时间型按天分割
-     *
+     *  根据指定Calendar的field类型将时间段分成日期list
      * @param startDate
      * @param endDate
+     * @param number
+     * @param field
      * @return
      */
-    public static List<String> dateTimeSplitByDay(Date startDate, Date endDate, int day) {
-      return dateTimeSplit(startDate,endDate,day,DATETIME_FORMAT,Calendar.DATE);
-    }
-
-    /**
-     * 日期时间型按天分割
-     *
-     * @param startDate
-     * @param endDate
-     * @return
-     */
-    public static List<String> dateTimeSplitByDay(String startDate, String endDate, int day) {
-        return dateTimeSplitByDay(parseDateTime(startDate),parseDateTime(endDate),day);
+    public static List<Date> splitBy2DateList(String startDate, String endDate, int number,int field, String pattern) {
+        return  dateSplit2DateList(parse(startDate,pattern),parse(endDate,pattern),field,number);
     }
 
 
-    /**
-     * 日期按天分割
-     *
-     * @param startDate
-     * @param endDate
-     * @return
-     */
-    public static List<String> dateSplitByDay(Date startDate, Date endDate, int day) {
-        return dateTimeSplit(startDate,endDate,day,DATE_FORMAT,Calendar.DATE);
-    }
 
     /**
-     * 日期按天分割
-     *
+     * 根据指定Calendar的field类型将时间段分成字符串list
      * @param startDate
      * @param endDate
+     * @param field
+     * @param number
      * @return
      */
-    public static List<String> dateSplitByDay(String startDate, String endDate, int day) {
-        return dateSplitByDay(parseDateTime(startDate),parseDateTime(endDate),day);
-    }
-
-    /**
-     * 日期时间按小时分割
-     *
-     * @param startDate
-     * @param endDate
-     * @return
-     */
-    public static List<String> dateSplitByHour(Date startDate, Date endDate, int hour) {
-        return dateTimeSplit(startDate,endDate,hour,DATETIME_FORMAT,Calendar.HOUR);
-    }
-
-    /**
-     * 日期时间按小时分割
-     *
-     * @param startDate
-     * @param endDate
-     * @return
-     */
-    public static List<String> dateSplitByHour(String startDate, String endDate, int hour) {
-        return dateSplitByHour(parseDateTime(startDate),parseDateTime(endDate),hour);
-    }
-
-    /**
-     * 日期时间按分钟分割
-     *
-     * @param startDate
-     * @param endDate
-     * @return
-     */
-    public static List<String> dateSplitByMinute(Date startDate, Date endDate, int minute) {
-        return dateTimeSplit(startDate,endDate,minute,DATETIME_FORMAT,Calendar.MINUTE);
-    }
-
-    /**
-     * 日期时间按分钟分割
-     *
-     * @param startDate
-     * @param endDate
-     * @return
-     */
-    public static List<String> dateSplitByMinute(String startDate, String endDate, int minute) {
-        return dateSplitByMinute(parseDateTime(startDate),parseDateTime(endDate),minute);
-    }
-
-    /**
-     * 日期时间按秒分割
-     *
-     * @param startDate
-     * @param endDate
-     * @return
-     */
-    public static List<String> dateSplitBySecond(Date startDate, Date endDate, int second) {
-        return dateTimeSplit(startDate,endDate,second,DATETIME_FORMAT,Calendar.SECOND);
-    }
-
-    /**
-     * 日期时间按秒分割
-     *
-     * @param startDate
-     * @param endDate
-     * @return
-     */
-    public static List<String> dateSplitBySecond(String startDate, String endDate, int second) {
-        return dateSplitBySecond(parseDateTime(startDate),parseDateTime(endDate),second);
+    public static List<String> splitBy2StrList(String startDate, String endDate,int field, int number,String pattern){
+        return splitBy2StrList(startDate,startDate,number,field,pattern);
     }
 
 
