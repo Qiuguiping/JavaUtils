@@ -2,6 +2,7 @@ package com.nascent.utils;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 /**
  * com.nascent.utils
@@ -9,7 +10,7 @@ import java.util.List;
  * @Author guiping.Qiu
  * @Date 2018/4/9
  */
-public class NumberUtil {
+public class NumberUtils {
     //num 表示数字，lower表示小写，upper表示大写
     private static final String[] num_lower = {"零", "一", "二", "三", "四", "五", "六", "七", "八", "九"};
     private static final String[] num_upper = {"零", "壹", "贰", "叁", "肆", "伍", "陆", "柒", "捌", "玖"};
@@ -95,9 +96,9 @@ public class NumberUtil {
             StringBuffer partNum = new StringBuffer();
             for (int j = 0; j < nums[i].length(); j++) {
                 int length = nums[i].length();
-                partNum.append(unit[j]).append(numArray[Integer.valueOf(nums[i].substring(length-j-1, length-j))]);
+                partNum.append(unit[j]).append(numArray[Integer.valueOf(nums[i].substring(length - j - 1, length - j))]);
             }
-            sb.insert(0,partNum.reverse().append(unit_common[i]));
+            sb.insert(0, partNum.reverse().append(unit_common[i]));
         }
         return sb.toString();
     }
@@ -119,7 +120,7 @@ public class NumberUtil {
         int i = strLength;
         String[] strArr = new String[size];
         for (int k = 0; k < size; k++) {
-            strArr[k] = str.substring(i-length < 0 ? 0: i - length, i);
+            strArr[k] = str.substring(i - length < 0 ? 0 : i - length, i);
             i -= length;
         }
         return strArr;
@@ -207,12 +208,41 @@ public class NumberUtil {
         if (num.indexOf("+") != num.lastIndexOf("+")) {
             throw new RuntimeException("数字[" + num + "]格式不正确！");
         }
-        if (num.indexOf("+") != num.lastIndexOf("+")) {
-            throw new RuntimeException("数字[" + num + "]格式不正确！");
-        }
         if (num.replaceAll("[\\d|\\.|\\-|\\+]", "").length() > 0) {
             throw new RuntimeException("数字[" + num + "]格式不正确！");
         }
+    }
+
+    /**
+     * 判断字符串是否传数字
+     *
+     * @param num
+     * @return
+     */
+    public static boolean isPureNumber(String num) {
+        return num.matches("[0-9]+");
+    }
+
+    /**
+     * 判断字符串是否可以转换为数字
+     *
+     * @param num
+     * @return
+     */
+    public static boolean isNumber(String num) {
+        if (num.indexOf(".") != num.lastIndexOf(".")) {
+            return false;
+        }
+        if (num.indexOf("-") != num.lastIndexOf("-") || num.lastIndexOf("-") > 0) {
+            return false;
+        }
+        if (num.indexOf("+") != num.lastIndexOf("+")) {
+            return false;
+        }
+        if (num.replaceAll("[\\d|\\.|\\-|\\+]", "").length() > 0) {
+            return false;
+        }
+        return true;
     }
 
 
@@ -262,6 +292,8 @@ public class NumberUtil {
         }
         return num;
     }
+
+
 
 
 }

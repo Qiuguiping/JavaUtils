@@ -12,7 +12,7 @@ import java.util.Locale;
  * @Author guiping.Qiu
  * @Date 2018/3/23
  */
-public class CharsetUtil {
+public class CharsetUtils {
 
     /**
      * 7位ASCII字符，也叫作ISO646-US、Unicode字符集的基本拉丁块
@@ -326,7 +326,7 @@ public class CharsetUtil {
      * @return
      */
     public static String Base64Decode2Str(String str, String charset) {
-        if (StringUtil.isEmpty(str)) {
+        if (StringUtils.isEmpty(str)) {
             return "";
         }
         String decode = "";
@@ -346,7 +346,7 @@ public class CharsetUtil {
      * @return
      */
     public static String Base64Encode2Str(String str, String charset) {
-        if (StringUtil.isEmpty(str)) {
+        if (StringUtils.isEmpty(str)) {
             return "";
         }
         byte[] strByte = new byte[0];

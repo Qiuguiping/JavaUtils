@@ -9,7 +9,7 @@ import java.util.*;
  * @Author guiping.Qiu
  * @Date 2018/4/9
  */
-public class CollectionUtil {
+public class CollectionUtils {
 
 
 

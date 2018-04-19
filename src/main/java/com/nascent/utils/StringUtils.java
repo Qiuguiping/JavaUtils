@@ -10,7 +10,7 @@ import java.util.*;
  * @Author guiping.Qiu
  * @Date 2018/3/22
  */
-public class StringUtil {
+public class StringUtils {
 
 
     private static final List<String> All_TRUE_STRING = new ArrayList<String>(Arrays.asList("1", "yes", "y", "true"));
@@ -402,7 +402,7 @@ public class StringUtil {
      */
     public static int toInt(String str) {
         int result = 0;
-        if(!StringUtil.isBlank(str)){
+        if(!StringUtils.isBlank(str)){
             result = Integer.parseInt(str);
         }
         return result;
@@ -417,7 +417,7 @@ public class StringUtil {
      */
     public static long toLong(String str) {
         long result = 0l;
-        if(!StringUtil.isBlank(str)) {
+        if(!StringUtils.isBlank(str)) {
             result = Long.parseLong(str);
         }
         return result;

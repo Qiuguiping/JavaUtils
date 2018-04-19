@@ -14,7 +14,7 @@ import java.util.Map;
  * @Author guiping.Qiu
  * @Date 2018/4/9
  */
-public class JavaBeanUtil {
+public class JavaBeanUtils {
 
     private static final char SEPARATOR = '_';
 

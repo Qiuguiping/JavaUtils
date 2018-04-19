@@ -14,10 +14,7 @@ public class DateUtilTest {
 
     @Test
     public void currentDateTime() throws Exception {
-        String str = "2365365.236";
-
-
-           System.out.println(NumberUtil.toChineseLower(str));
+        new ThreadPoolUtils(ThreadPoolUtils.CachedThread ,4);
     }
 
 
@@ -25,17 +22,17 @@ public class DateUtilTest {
     public void currentTime() throws Exception {
         String[] a = {"a","d"};
         String b = "a";
-        List<String> ab = StringUtil.splitString2List("a a b"," ",1);
+        List<String> ab = StringUtils.splitString2List("a a b"," ",1);
         System.out.println(ab);
     }
 
     @Test
     public void currentDate() throws Exception {
         String str = "9793265456";
-        String hexStr = CharsetUtil.str2HexStr(str);
+        String hexStr = CharsetUtils.str2HexStr(str);
         System.out.println(hexStr);
-        System.out.println(CharsetUtil.changeCharset(str,CharsetUtil.US_ASCII,CharsetUtil.US_ASCII));
-        System.out.println(CharsetUtil.hexStr2Str(hexStr));
+        System.out.println(CharsetUtils.changeCharset(str,CharsetUtils.US_ASCII,CharsetUtils.US_ASCII));
+        System.out.println(CharsetUtils.hexStr2Str(hexStr));
 //        String  encodeStr = CharsetUtil.Base64Encode2Str(str,CharsetUtil.UTF_16);
 //        System.out.println(encodeStr);
 //        String  decodeStr = CharsetUtil.Base64Decode2Str(encodeStr,CharsetUtil.UTF_16);

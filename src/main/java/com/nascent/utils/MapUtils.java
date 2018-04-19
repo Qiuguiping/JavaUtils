@@ -16,7 +16,7 @@ import static org.apache.commons.collections.MapUtils.safeAddToMap;
  * @Author guiping.Qiu
  * @Date 2018/4/9
  */
-public class MapUtil {
+public class MapUtils {
 
     /**
      * 将Map转换为Object
@@ -95,7 +95,7 @@ public class MapUtil {
      */
     public static <T> Collection<Map<String, String>> toMapList(Collection<T> collection) throws IllegalAccessException, InvocationTargetException, NoSuchMethodException {
         List<Map<String, String>> retList = new ArrayList<>();
-        if (!CollectionUtil.listIsNullOrEmpty(retList)) {
+        if (!CollectionUtils.listIsNullOrEmpty(retList)) {
             for (T t : collection) {
                 Map<String, String> map = toMap(t);
                 retList.add(map);
@@ -147,7 +147,7 @@ public class MapUtil {
     public static <V> Map<String, V> toCamelCaseMap(Map<String, V> map) {
         Map<String, V> newMap = new HashMap<String, V>();
         for (String key : map.keySet()) {
-            safeAddToMap(newMap, JavaBeanUtil.toCamelCaseString(key), map.get(key));
+            safeAddToMap(newMap, JavaBeanUtils.toCamelCaseString(key), map.get(key));
         }
         return newMap;
     }
@@ -162,7 +162,7 @@ public class MapUtil {
     public static <V> Map<String, V> toUnderlineStringMap(Map<String, V> map) {
         Map<String, V> newMap = new HashMap<String, V>();
         for (String key : map.keySet()) {
-            newMap.put(JavaBeanUtil.toUnderlineString(key), map.get(key));
+            newMap.put(JavaBeanUtils.toUnderlineString(key), map.get(key));
         }
         return newMap;
     }

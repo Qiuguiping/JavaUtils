@@ -13,7 +13,7 @@ import java.util.List;
  * @Author guiping.Qiu
  * @Date 2018/3/22
  */
-public class DateUtil {
+public class DateUtils {
     //日期时间类型格式
     private static final String DATETIME_FORMAT = "yyyy-MM-dd HH:mm:ss";
 
@@ -289,7 +289,7 @@ public class DateUtil {
      */
     public static String format(Date date, String pattern) {
 
-        if (date == null || StringUtil.isEmpty(pattern)) {
+        if (date == null || StringUtils.isEmpty(pattern)) {
             return null;
         }
         return instance(pattern).format(date);
@@ -304,7 +304,7 @@ public class DateUtil {
      */
     public static Date parse(String str, String pattern) {
         Date date = null;
-        if (StringUtil.isEmpty(str) || StringUtil.isEmpty(pattern)) {
+        if (StringUtils.isEmpty(str) || StringUtils.isEmpty(pattern)) {
             return date;
         }
 
@@ -506,7 +506,7 @@ public class DateUtil {
     public static boolean isDate(String dateStr, String pattern) {
 
         boolean isDate = false;
-        if (StringUtil.isEmpty(dateStr) || StringUtil.isEmpty(pattern)) {
+        if (StringUtils.isEmpty(dateStr) || StringUtils.isEmpty(pattern)) {
             return isDate;
         }
 
