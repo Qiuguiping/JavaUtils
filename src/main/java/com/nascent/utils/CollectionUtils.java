@@ -12,6 +12,8 @@ import java.util.*;
 public class CollectionUtils {
 
 
+    private CollectionUtils() {
+    }
 
     /**
      * 泛型list转换为数组

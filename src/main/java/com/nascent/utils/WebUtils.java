@@ -37,6 +37,7 @@ public abstract class WebUtils {
     private static final Integer connectTimeout = 5000;
     private static final Integer readTimeout = 8000;
 
+
     static {
         InputStream input = null;
         try {
@@ -51,6 +52,9 @@ public abstract class WebUtils {
                 }
             }
         }
+    }
+
+    private WebUtils() {
     }
 
     private static class VerisignTrustManager implements X509TrustManager {
@@ -101,8 +105,6 @@ public abstract class WebUtils {
         }
     }
 
-    private WebUtils() {
-    }
 
     public static void setIgnoreSSLCheck(boolean ignoreSSLCheck) {
         WebUtils.ignoreSSLCheck = ignoreSSLCheck;

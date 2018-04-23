@@ -15,6 +15,8 @@ public class StringUtils {
 
     private static final List<String> All_TRUE_STRING = new ArrayList<String>(Arrays.asList("1", "yes", "y", "true"));
 
+    private StringUtils(){}
+
     /**
      * 判断是否是空字符串 null和"" 都返回 true
      *

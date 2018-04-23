@@ -18,6 +18,8 @@ public class JavaBeanUtils {
 
     private static final char SEPARATOR = '_';
 
+    private JavaBeanUtils(){}
+
     /**
      * 将属性样式字符串转成驼峰样式字符串<br>
      * (例:branchNo -> branch_no)<br>

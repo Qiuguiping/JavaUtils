@@ -45,6 +45,8 @@ public class PropertiesUtils {
      */
     private static Map propertyCache = new HashMap();
 
+    private PropertiesUtils(){}
+
     /**
      * 取得指定属性文件中的属性
      *

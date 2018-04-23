@@ -32,6 +32,8 @@ public class NumberUtils {
             'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y',
             'Z'};
 
+
+    private NumberUtils(){}
     /**
      * 数字转化为小写的汉字
      *

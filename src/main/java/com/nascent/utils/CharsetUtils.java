@@ -58,6 +58,9 @@ public class CharsetUtils {
     private final static char[] mChars = "0123456789ABCDEF".toCharArray();
     private final static String mHexStr = "0123456789ABCDEF";
 
+    private CharsetUtils() {
+    }
+
     /**
      * 将字符编码转换成US-ASCII码
      */

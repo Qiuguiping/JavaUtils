@@ -20,6 +20,9 @@ import java.util.regex.Pattern;
  */
 public class CommonUtils {
 
+    private CommonUtils() {
+    }
+
     /**
      * 验证邮箱
      *

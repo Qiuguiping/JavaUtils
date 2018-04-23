@@ -18,6 +18,8 @@ import static org.apache.commons.collections.MapUtils.safeAddToMap;
  */
 public class MapUtils {
 
+    private MapUtils(){}
+
     /**
      * 将Map转换为Object
      *

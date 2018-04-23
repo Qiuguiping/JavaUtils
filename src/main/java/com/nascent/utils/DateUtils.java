@@ -41,6 +41,8 @@ public class DateUtils {
     //注意SimpleDateFormat不是线程安全的
     private static ThreadLocal<SimpleDateFormat> ThreadDateTime = new ThreadLocal<SimpleDateFormat>();
 
+    private DateUtils() {
+    }
 
     /**
      * 当前日期
